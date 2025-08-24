@@ -6,6 +6,7 @@ public class User {
     private String phone;
     private String dateOfBirth;
 
+    public User () {}
 
     public User(String name, String doc, String phone, String dateOfBirth){
        this.name = name;
