@@ -7,6 +7,8 @@ public class Card{
     private String type;
     private boolean isActive;
 
+    public Card (){}
+
     public Card(String number, String name, String expiry, String cvv, String brand, String type){
         this.number = number;
         this.name = name;
