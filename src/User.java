@@ -1,7 +1,5 @@
 
 
-package src;
-
 public class User {
     private String name;
     private String doc;
@@ -9,7 +7,7 @@ public class User {
     private String dateOfBirth;
 
 
-    public User(String name, String doc, String tel, String dateOfBirth){
+    public User(String name, String doc, String phone, String dateOfBirth){
        this.name = name;
        this.doc = doc;
        this.phone = phone;
