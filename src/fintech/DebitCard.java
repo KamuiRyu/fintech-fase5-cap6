@@ -1,9 +1,11 @@
 package fintech;
 
+import java.util.Date;
+
 public class DebitCard extends Card {
     private double balance;
 
-    public DebitCard(int id, String issuer, String lastFourDigits, String alias, boolean shared, User owner, java.util.Date createdAt, java.util.Date updatedAt, double balance) {
+    public DebitCard(int id, String issuer, String lastFourDigits, String alias, boolean shared, User owner, Date createdAt, Date updatedAt, double balance) {
         super(id, issuer, lastFourDigits, alias, shared, owner, createdAt, updatedAt);
         this.balance = balance;
     }
