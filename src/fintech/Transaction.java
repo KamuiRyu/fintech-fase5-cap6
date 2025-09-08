@@ -1,3 +1,4 @@
+package fintech;
 import java.util.Date;
 
 public class Transaction {
@@ -5,7 +6,6 @@ public class Transaction {
     double value;
     Date date;
     String description;
-
 
     public Transaction(){}
 

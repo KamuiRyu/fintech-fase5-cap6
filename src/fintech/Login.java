@@ -1,4 +1,4 @@
-package src;
+package fintech;
 
 public class Login{
     private String email;

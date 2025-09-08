@@ -1,10 +1,13 @@
+package fintech;
 
+import java.math.BigDecimal;
 
 public class User {
     private String name;
     private String doc;
     private String phone;
     private String dateOfBirth;
+    private BigDecimal balance;
 
     public User () {}
 
