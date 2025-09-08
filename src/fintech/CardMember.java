@@ -1,14 +1,16 @@
 package fintech;
 
+import java.util.Date;
+
 public class CardMember {
     private int id;
     private Card card;
     private User user;
     private boolean canManage;
-    private java.util.Date createdAt;
-    private java.util.Date updatedAt;
+    private Date createdAt;
+    private Date updatedAt;
 
-    public CardMember(int id, Card card, User user, boolean canManage, java.util.Date createdAt, java.util.Date updatedAt) {
+    public CardMember(int id, Card card, User user, boolean canManage, Date createdAt, Date updatedAt) {
         this.id = id;
         this.card = card;
         this.user = user;
@@ -45,19 +47,19 @@ public class CardMember {
         this.canManage = canManage;
     }
 
-    public java.util.Date getCreatedAt() {
+    public Date getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(java.util.Date createdAt) {
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
-    public java.util.Date getUpdatedAt() {
+    public Date getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(java.util.Date updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 }
