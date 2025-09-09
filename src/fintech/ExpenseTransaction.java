@@ -6,8 +6,8 @@ public class ExpenseTransaction extends Transaction{
     private String category;
 
     public ExpenseTransaction(int id, String description, double amount, Date occuredAt, String category){
-    super(id, description, amount, occuredAt);
-    this.category = category;
+        super(id, description, amount, occuredAt);
+        this.category = category;
     }
 
     public String getCategory(){
