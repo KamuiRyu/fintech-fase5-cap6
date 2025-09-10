@@ -1,3 +1,5 @@
+package fintech;
+
 import java.util.Date;
 
 public class TransactionSplit {
