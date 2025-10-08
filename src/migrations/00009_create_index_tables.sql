@@ -1,0 +1,10 @@
+CREATE INDEX idx_transactions_user_id ON transactions(user_id);
+CREATE INDEX idx_transactions_card_id ON transactions(card_id);
+CREATE INDEX idx_transactions_category_id ON transactions(category_id);
+CREATE INDEX idx_card_members_card_id ON card_members(card_id);
+CREATE INDEX idx_card_members_user_id ON card_members(user_id);
+CREATE INDEX idx_transaction_splits_transaction_id ON transaction_splits(transaction_id);
+CREATE INDEX idx_transaction_splits_user_id ON transaction_splits(user_id);
+CREATE INDEX idx_notifications_user_id ON notifications(user_id);
+CREATE INDEX idx_reminders_transaction_id ON reminders(transaction_id);
+CREATE INDEX idx_reminders_user_id ON reminders(user_id);
