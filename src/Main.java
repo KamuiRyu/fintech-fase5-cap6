@@ -1,26 +1,51 @@
 import fintech.User;
+import fintech.Card;
+import fintech.utils.EnvLoader;
+
+import java.util.List;
+import java.util.Map;
+import java.sql.Timestamp;
 
 public class Main {
     public static void main(String[] args) {
-        // Criando um objeto User
-        User user1 = new User("Aline", "12345678900", "11999999999", "01/01/1990");
 
-        // Exibindo dados usando getters
-        System.out.println("Nome: " + user1.getName());
-        System.out.println("Documento: " + user1.getDoc());
-        System.out.println("Telefone: " + user1.getPhone());
-        System.out.println("Data de Nascimento: " + user1.getDateOfBirth());
+        EnvLoader.loadEnv(".env");
 
-        // Atualizando dados com setters
-        user1.setName("Aline Silva");
-        user1.setPhone("11988888888");
+        User user = new User(
+                0,
+                "Aline",
+                "12345678900",
+                "11999999999",
+                "aline@email.com",
+                "senhaSegura123",
+                1,
+                new Timestamp(System.currentTimeMillis()),
+                new Timestamp(System.currentTimeMillis()));
 
-        System.out.println("\n--- Após atualização ---");
-        System.out.println("Nome: " + user1.getName());
-        System.out.println("Telefone: " + user1.getPhone());
+        Map<String, Object> userResponse = user.create();
+        if (Boolean.FALSE.equals(userResponse.get("success")) && "USER_EXISTS".equals(userResponse.get("code"))) {
+            System.out.println("Usuário já existie. Buscando pelo e-mail...");
+            user = user.getByEmail(user.getEmail());
+            System.out.println("Usuário encontrado: " + user.getName() + " | Email: " + user.getEmail() + " | ID: "
+                    + user.getId());
+        } else {
+            user = userResponse.get("user") instanceof User ? (User) userResponse.get("user") : null;
+            System.out.println("Novo usuário criado: " + user.getName() + " | Email: " + user.getEmail() + " | ID: "
+                    + user.getId());
+        }
 
-        // Chamando os métodos de exemplo
-        user1.update();
-        user1.remove();
+        Card card = new Card(0, "Visa", "3456", "Cartão Principal", "N", user.getId(),
+                new Timestamp(System.currentTimeMillis()),
+                new Timestamp(System.currentTimeMillis()));
+        card = card.create();
+        System.out.println("\nCartão criado: " + card.getIssuer() + " | Final: " + card.getLastFourDigits() + " | ID: "
+                + card.getId());
+
+        List<Card> cards = card.getAll();
+        System.out.println("\n=== Cartões cadastrados ===");
+        for (Card c : cards) {
+            System.out
+                    .println("ID: " + c.getId() + " | Número: " + c.getLastFourDigits() + " | Marca: " + c.getIssuer());
+        }
     }
 }

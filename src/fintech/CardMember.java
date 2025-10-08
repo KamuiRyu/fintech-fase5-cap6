@@ -1,19 +1,20 @@
 package fintech;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class CardMember {
     private int id;
-    private Card card;
-    private User user;
+    private int cardId;
+    private int userId;
     private boolean canManage;
-    private Date createdAt;
-    private Date updatedAt;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
-    public CardMember(int id, Card card, User user, boolean canManage, Date createdAt, Date updatedAt) {
+    public CardMember(int id, int cardId, int userId, boolean canManage, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
-        this.card = card;
-        this.user = user;
+        this.cardId = cardId;
+        this.userId = userId;
         this.canManage = canManage;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
@@ -23,20 +24,8 @@ public class CardMember {
         return id;
     }
 
-    public Card getCard() {
-        return card;
-    }
-
-    public void setCard(Card card) {
-        this.card = card;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(int userId) {
+        this.userId = userId;
     }
 
     public boolean isCanManage() {
@@ -47,19 +36,36 @@ public class CardMember {
         this.canManage = canManage;
     }
 
-    public Date getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    public int getCardId() {
+        return cardId;
+    }
+
+    public void setCardId(int cardId) {
+        this.cardId = cardId;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
 }

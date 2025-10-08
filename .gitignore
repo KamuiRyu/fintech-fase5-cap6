@@ -64,3 +64,6 @@ build/
 *.swp
 .DS_Store
 Thumbs.db
+
+# Environment variables file
+.env
