@@ -1,29 +1,32 @@
 package fintech;
 
-import java.util.Date;
+import java.util.*;
+import java.sql.*;
+import fintech.dao.TransactionDAO;
 
-public abstract class Transaction {
+public class Transaction {
     private int id;
     private String description;
     private double amount;
-    private Date ocurredAt;
-    private Date dueDate;
+    private Timestamp ocurredAt;
+    private Timestamp dueDate;
     private boolean isRecurring;
     private boolean isPaid;
-    private Date createdAt;
-    private Date updatedAt;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
+    TransactionDAO transactionDAO = new TransactionDAO();
 
 
     public Transaction(){}
 
-    public Transaction(int id, String description, double amount, Date ocurredAt){
+    public Transaction(int id, String description, double amount, Timestamp ocurredAt){
         this.id = id;
         this.description = description;
         this.amount = amount;
         this.ocurredAt = ocurredAt;
     }
 
-    public Transaction(int id, String description, double amount, Date ocurredAt, Date dueDate, boolean isRecurring, boolean isPaid, Date createdAt, Date updatedAt){
+    public Transaction(int id, String description, double amount, Timestamp ocurredAt, Timestamp dueDate, boolean isRecurring, boolean isPaid, Timestamp createdAt, Timestamp updatedAt){
         this.id = id;
         this.description = description;
         this.amount = amount;
@@ -33,6 +36,18 @@ public abstract class Transaction {
         this.isPaid = isPaid;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+    }
+
+    public Transaction create(){
+        transactionDAO.insert(this);
+        return this;
+    }
+    public List<Transaction> getAll(){
+        return transactionDAO.getAll();
+    }
+
+    public Transaction getById(int id){
+        return transactionDAO.getById(id);
     }
 
     public int getId() {
@@ -59,19 +74,19 @@ public abstract class Transaction {
         this.amount = amount;
     }
 
-    public Date getOcurredAt() {
+    public Timestamp getOcurredAt() {
         return ocurredAt;
     }
 
-    public void setOcurredAt(Date ocurredAt) {
+    public void setOcurredAt(Timestamp ocurredAt) {
         this.ocurredAt = ocurredAt;
     }
 
-    public Date getDueDate() {
+    public Timestamp getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(Date dueDate) {
+    public void setDueDate(Timestamp dueDate) {
         this.dueDate = dueDate;
     }
 
@@ -83,11 +98,11 @@ public abstract class Transaction {
         isRecurring = recurring;
     }
 
-    public Date getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -99,13 +114,12 @@ public abstract class Transaction {
         isPaid = paid;
     }
 
-    public Date getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public abstract void processTransaction();
 }
