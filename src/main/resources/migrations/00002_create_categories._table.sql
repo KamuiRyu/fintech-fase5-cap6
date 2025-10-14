@@ -1,0 +1,10 @@
+CREATE TABLE categories (
+    id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    user_id INTEGER,
+    name VARCHAR2(100),
+    description CLOB,
+    type SMALLINT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT categories_FK_user FOREIGN KEY (user_id) REFERENCES users(id)
+);
