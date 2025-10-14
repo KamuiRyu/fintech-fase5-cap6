@@ -66,4 +66,3 @@ build/
 Thumbs.db
 
 # Environment variables file
-.env
